@@ -66,7 +66,7 @@ Depois deves ver numa pasta `output/` o teu irs (`.xml`) já com os conteúdos d
 ## Limitações
 - Isto só funciona com stocks que sejam negociadas em EUR. Não há suporte para taxa de câmbio, mas estás à vontade para adicionar esse feature.
 
-- Se calhar só funciona se a plataforma da degiro estiver em PT. Se for esse o caso, é preciso mudar mudar o nome das colunas aqui
+- Se calhar só funciona se a plataforma da degiro estiver em PT. Se for esse o caso, é preciso mudar mudar o nome das colunas [aqui](https://github.com/francis2tm/Degiro2IRS-Autofiller/blob/ddf0c032b347164bb8144a1b702bb70d3e7693ac/degiro2irs-autofiller.py#L62)
 
 ## Licença
 Degiro2IRS-Autofiller é licenciado através de uma licença GPL, conforme encontrado no arquivo [LICENSE](LICENSE).
