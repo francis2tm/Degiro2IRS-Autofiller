@@ -61,7 +61,10 @@ Ir a Atividade->Transações na degiro
 
 3) Confirmar se os valores imprimidos no terminal "Metrics by financial product" e "Total XXXX metrics" batem certo com os valores do relatório anual da degiro. É normal que haja erros de arredondamento (principalmente no total gains, no meu exemplo deu um erro de 0.5€)
 
-Depois deves ver numa pasta `output/` o teu irs (`.xml`) já com os conteúdos da tabela J-9.2-a preenchidos.
+Depois deves ver o teu ficheiro IRS `output/irs_com_J-9.2a.xml` já com os conteúdos da tabela J-9.2-a preenchidos.
+
+4) Podes carregar depois o ficheiro `output/irs_com_J-9.2a.xml` preenchido na próxima vez que preencheres o IRS.
+![Load xml](doc_assets/load_xml_irs_at.png)
 
 ## Limitações
 - Isto só funciona com stocks que sejam negociadas em EUR. Não há suporte para taxa de câmbio, mas estás à vontade para adicionar esse feature.

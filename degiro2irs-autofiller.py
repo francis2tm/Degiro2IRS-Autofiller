@@ -158,15 +158,22 @@ def main():
     #Get overall gains
     irs_df = pd.DataFrame.from_dict(irs_list, orient='columns')
     irs_df = irs_df.round(2)            #Round every cell to 2 decimal places
-    gains = 0
+    total_gains = 0
+    total_valor_realizacao = 0
+    total_valor_aquisicao = 0
     commissions = 0
     irs_df = irs_df.reset_index()  #Make sure indexes pair with number of rows
     for index, row in irs_df.iterrows():
-        gains += row["ValorRealizacao"] - row["ValorAquisicao"]
+        total_valor_realizacao += row["ValorRealizacao"]
+        total_valor_aquisicao += row["ValorAquisicao"]
         commissions += row["DespesasEncargos"]
+    total_valor_realizacao = round(total_valor_realizacao, 2)
+    total_valor_aquisicao = round(total_valor_aquisicao, 2)
+    commissions = round(commissions, 2)
+    total_gains = total_valor_realizacao-total_valor_aquisicao
 
     print("\nTotal %d metrics-------------------------------------------------------------------------------------------------" % (irs_year))
-    print("Total gains:%.2f, Total commissions:%.2f" % (gains, commissions))
+    print("Total gains:%.2f, Total commissions:%.2f" % (total_gains, commissions))
 
     #Generate string with contents of irs table 
     irs_xml_str = irs_df.to_xml(index=False, root_name=IRS_TABLE_NAME, row_name=IRS_TABLE_NAME+"-Linha", xml_declaration=False)
@@ -177,6 +184,10 @@ def main():
         irs_file_str = file.read()          #Read in the file
     
     irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'/>', irs_xml_str)   #Replace the target string
+
+    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC01>0.00</'+IRS_TABLE_NAME+'SomaC01>', '<'+IRS_TABLE_NAME+'SomaC01>'+str(total_valor_realizacao)+'</'+IRS_TABLE_NAME+'SomaC01>')   #Replace the target string
+    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC02>0.00</'+IRS_TABLE_NAME+'SomaC02>', '<'+IRS_TABLE_NAME+'SomaC02>'+str(total_valor_aquisicao)+'</'+IRS_TABLE_NAME+'SomaC02>')   #Replace the target string
+    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC03>0.00</'+IRS_TABLE_NAME+'SomaC03>', '<'+IRS_TABLE_NAME+'SomaC03>'+str(commissions)+'</'+IRS_TABLE_NAME+'SomaC03>')   #Replace the target string
 
     #Write output xml file
     os.makedirs(os.path.dirname(OUTPUT_FILE_DIR), exist_ok=True)  #Create file writing directory
