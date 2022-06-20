@@ -179,15 +179,15 @@ def main():
     irs_xml_str = irs_df.to_xml(index=False, root_name=IRS_TABLE_NAME, row_name=IRS_TABLE_NAME+"-Linha", xml_declaration=False)
     irs_xml_str = '\t\t\t'.join(irs_xml_str.splitlines(True))       #add 3 tabs to each line (except the first one)
 
-    #Replace 
+    #Fill irs_file with computed table contents
     with open(irs_file, 'r') as file :
-        irs_file_str = file.read()          #Read in the file
+        irs_file_str = file.read()          #read irs file
     
-    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'/>', irs_xml_str)   #Replace the target string
+    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'/>', irs_xml_str)   #Fill table contents
 
-    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC01>0.00</'+IRS_TABLE_NAME+'SomaC01>', '<'+IRS_TABLE_NAME+'SomaC01>'+str(total_valor_realizacao)+'</'+IRS_TABLE_NAME+'SomaC01>')   #Replace the target string
-    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC02>0.00</'+IRS_TABLE_NAME+'SomaC02>', '<'+IRS_TABLE_NAME+'SomaC02>'+str(total_valor_aquisicao)+'</'+IRS_TABLE_NAME+'SomaC02>')   #Replace the target string
-    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC03>0.00</'+IRS_TABLE_NAME+'SomaC03>', '<'+IRS_TABLE_NAME+'SomaC03>'+str(commissions)+'</'+IRS_TABLE_NAME+'SomaC03>')   #Replace the target string
+    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC01>0.00</'+IRS_TABLE_NAME+'SomaC01>', '<'+IRS_TABLE_NAME+'SomaC01>'+str(total_valor_realizacao)+'</'+IRS_TABLE_NAME+'SomaC01>')        #Fill soma controlo valor realizacao
+    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC02>0.00</'+IRS_TABLE_NAME+'SomaC02>', '<'+IRS_TABLE_NAME+'SomaC02>'+str(total_valor_aquisicao)+'</'+IRS_TABLE_NAME+'SomaC02>')        #Fill soma controlo valor aquisicao
+    irs_file_str = irs_file_str.replace('<'+IRS_TABLE_NAME+'SomaC03>0.00</'+IRS_TABLE_NAME+'SomaC03>', '<'+IRS_TABLE_NAME+'SomaC03>'+str(commissions)+'</'+IRS_TABLE_NAME+'SomaC03>')                       #Fill soma controlo respesas e encargos
 
     #Write output xml file
     os.makedirs(os.path.dirname(OUTPUT_FILE_DIR), exist_ok=True)  #Create file writing directory
