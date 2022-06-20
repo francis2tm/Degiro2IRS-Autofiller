@@ -35,7 +35,7 @@ Ir a Atividade->Transações na degiro
 
 ![Exportar Degiro](doc_assets/exportar_degiro.png)
 
-### 2. Auto-preenchimento IRS com as transações realizadas no ano fiscal pretendido
+### <a name="irs_at_export"></a> 2. Auto-preenchimento IRS com as transações realizadas no ano fiscal pretendido
 
 1) Primeiro é preciso gerar um .xml pre-preenchido diretamente da platafora IRS da AT. Para isso, faz um pre-preenchimento do IRS e cria o anexo J. De seguida, clica em "Gravar":
 
@@ -48,7 +48,7 @@ Ir a Atividade->Transações na degiro
 ![Determinar nline_offset](doc_assets/at_irs_nline_offset.png)
 
 2) Correr o `degiro2irs-autofiller.py` com os argumentos pretendidos
-    - `irs_file` é o path para o ficheiro IRS pre-preenchido `.xml` exportado pela plataforma IRS da AT.
+    - `irs_file` é o path para o ficheiro IRS pre-preenchido `.xml` exportado pela plataforma IRS da AT [neste passo](#irs_at_export).
     - `transactions_file` é o path para o ficheiro exportado pela degiro [neste passo](#degiro_export)
     - `year` ano fiscal pretendido
     - `line_offset` determinado acima
