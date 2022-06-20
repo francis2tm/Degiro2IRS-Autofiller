@@ -1,7 +1,7 @@
 # Degiro2IRS-Autofiller
-Ajuda (99%) a preencher automaticamente a tabela 9.2-A do Anexo J do IRS. Isto é, ajuda a combater a ineficiência da administração pública portuguesa.
+Cálcula e preenche automaticamente a tabela 9.2-A do Anexo J do IRS. Isto é, ajuda a combater a ineficiência da administração pública portuguesa.
 
-Este script na verdade gera um `.xml` com os conteúdos já no formato da plataforma IRS e basta copiar esses conteúdos para o ficheiro `.xml` gerado pela plataforma IRS.
+Este script pega nas transações exportadas pela degiro e num ficheiro `.xml` que tem os conteúdos da declaração IRS e exporta a declaração IRS com a tabela J-9.2-A.
 
 ## Usage
 
