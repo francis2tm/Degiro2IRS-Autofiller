@@ -22,7 +22,7 @@ options:
                         Primeira linha da tabela 9.2-A do Anexo J (lá diz "Nº Linha (XXX a ...)"
 ```
 
-## How-to em 4 passos
+## How-to em 3 passos
 Exemplo IRS 2021
 ### <a name="degiro_export"></a> 1. Exportar transações da degiro
 
