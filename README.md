@@ -35,12 +35,12 @@ Ir a Atividade->Transações na degiro
 
 ![Exportar Degiro](doc_assets/exportar_degiro.png)
 
-### <a name="irs_at_export"></a> 2. Auto-preenchimento IRS com as transações realizadas no ano fiscal pretendido
+### <a name="irs_at_export"></a> 2. Exportar IRS pre-preenchido
 É preciso gerar um .xml pre-preenchido diretamente da platafora IRS da AT. Para isso, faz um pre-preenchimento do IRS e cria o anexo J. De seguida, clica em "Gravar":
 
 ![Determinar nline_offset](doc_assets/gravar_xml_irs_at.png)
 
-### 3. Gerar e preencher conteúdos da tabela J-9.2-a
+### 3. Gerar e preencher automaticamente os conteúdos da tabela J-9.2-a
 
 1) Antes de correr o programa, é necessário determinar o `line_offset`, o nº da primeira linha da tabela J-9.2-a que varia em função da info que consta no teu IRS até ao momento. Para isso, vai à página do IRS da AT e vê o nº que lá aparece, neste exemplo é `951`:
 
