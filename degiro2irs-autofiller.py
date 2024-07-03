@@ -15,7 +15,7 @@ OUTPUT_FILE_DIR = "output/irs_com_J-9.2a.xml"
 BUY = 0
 SELL = 1
 
-IRS_COLUMN_LIST = ['NLinha', 'CodPais', 'Codigo', 'AnoRealizacao', 'MesRealizacao', 'ValorRealizacao', 'AnoAquisicao', 'MesAquisicao', 'ValorAquisicao', 'DespesasEncargos']
+IRS_COLUMN_LIST = ['NLinha', 'CodPais', 'Codigo', 'AnoRealizacao', 'MesRealizacao', 'DiaRealizacao', 'ValorRealizacao', 'AnoAquisicao', 'MesAquisicao', 'DiaAquisicao', 'ValorAquisicao', 'DespesasEncargos']
 
 IRS_CODIGO = 'G01'
 IRS_TABLE_NAME = "AnexoJq092AT01"
@@ -26,9 +26,11 @@ def createIRSEntry(irs_isin_df, nline_offset, amount, trans_cost, buy_row, sell_
     codigo = IRS_CODIGO
     ano_realizacao = sell_row["date"].split('-')[-1]
     mes_realizacao = sell_row["date"].split('-')[-2]
+    dia_realizacao = sell_row["date"].split('-')[-3]
     valor_realizacao = amount*sell_row["price"]
     ano_aquisicao = buy_row["date"].split('-')[-1]
     mes_aquisicao = buy_row["date"].split('-')[-2]
+    dia_aquisicao = buy_row["date"].split('-')[-3]
     valor_aquisicao = amount*buy_row["price"]
     despesas_encargo = trans_cost
 
@@ -38,11 +40,13 @@ def createIRSEntry(irs_isin_df, nline_offset, amount, trans_cost, buy_row, sell_
         IRS_COLUMN_LIST[2]: codigo,
         IRS_COLUMN_LIST[3]: ano_realizacao,
         IRS_COLUMN_LIST[4]: mes_realizacao,
-        IRS_COLUMN_LIST[5]: valor_realizacao,
-        IRS_COLUMN_LIST[6]: ano_aquisicao,
-        IRS_COLUMN_LIST[7]: mes_aquisicao,
-        IRS_COLUMN_LIST[8]: valor_aquisicao,
-        IRS_COLUMN_LIST[9]: despesas_encargo
+        IRS_COLUMN_LIST[5]: dia_realizacao,
+        IRS_COLUMN_LIST[6]: valor_realizacao,
+        IRS_COLUMN_LIST[7]: ano_aquisicao,
+        IRS_COLUMN_LIST[8]: mes_aquisicao,
+        IRS_COLUMN_LIST[9]: dia_aquisicao,
+        IRS_COLUMN_LIST[10]: valor_aquisicao,
+        IRS_COLUMN_LIST[11]: despesas_encargo
     }
     irs_isin_df.append(new_row)
 
